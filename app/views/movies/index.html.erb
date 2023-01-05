@@ -3,11 +3,8 @@
 </h1>
 <hr>
 
-<div>
-  <a href="<%= new_movie_path %>">Add a new movie</a>
-</div>
 <hr>
-<%= link_to 'go to google', "http"" %>
+<%= link_to 'Add a new movie', new_movie_path %>
 <hr>
 
 <table>
@@ -58,9 +55,8 @@
     </td>
 
     <td>
-      <a href="<%= movie_path(a_movie.id) %>">
-        Show details
-      </a>
+    <%= link_to 'Show details', a_movie %>
+  
     </td>
   </tr>
   <% end %>

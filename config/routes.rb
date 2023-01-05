@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   get "/movies/:id/edit" => "movies#edit", as: :edit_movie # edit_movie_path() expects an argument 
   
   # DELETE
+
+
   delete "/movies/:id" => "movies#destroy" 
 
   #------------------------------
