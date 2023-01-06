@@ -46,12 +46,12 @@ class DirectorsController < ApplicationController
 
     @director = Director.find(params.fetch(:id))
     director_attributes = params.require(:director).permit(:name, :dob)
-    @Director.update(director_attributes)
+    @director.update(director_attributes)
     # @Director.title = params.fetch(:name)
     # @Director.description = params.fetch(:dob)
 
-    if @Director.valid?
-      @Director.save
+    if @director.valid?
+      @director.save
       redirect_to director_url(@director), notice: "director updated successfully."
     else
       redirect_to director_url(@director), alert: "director failed to update successfully."
@@ -61,7 +61,7 @@ class DirectorsController < ApplicationController
   def destroy
     director = Director.find(params.fetch(:id))
 
-    Director.destroy
+    director.destroy
 
     redirect_to directors_url, notice: "director deleted successfully."
   end
