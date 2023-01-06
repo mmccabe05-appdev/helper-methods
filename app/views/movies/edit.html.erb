@@ -5,23 +5,19 @@
 <% end %>
 
 
-<%= form_with(url: movie_path(@movie.id), method: :patch) do %>
+<%= form_with(model: @movie) do |form| %>
 
   <div>
-    <%= label_tag :title %>
-    <%= text_field_tag :title, @movie.title, id: "title" %>
+    <%= form.label :title %>
+    <%= form.text_field :title %>
   </div>
 
   <div>
-    <label for="description">
-      Description
-    </label>
-    <%= label_tag :description, "Description" %>
-    <%= text_area_tag :description, @movie.description, id: "description", rows: "5" %>
+
+    <%= form.label :description %>
+    <%= form.text_area :description, rows: 3 %>
 
   </div>
-  <%= button_tag "Update movie" %>
+  <%= form.button %>
 
 <% end %>
-
-<!-- removing from here down -->

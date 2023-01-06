@@ -23,17 +23,16 @@ class MoviesController < ApplicationController
   end
 
   def create
-    @movie = Movie.new
-    @movie.title = params.fetch(:movie).fetch(:title)
-    @movie.description = params.fetch(:movie).fetch(:description)
+
+    movie_attributes = params.require(:movie).permit(:title, :description)
+
+    @movie = Movie.new(movie_attributes)
 
     if @movie.valid?
       @movie.save
       redirect_to movies_url, notice: "Movie created successfully."
     else
-     # render template: "new"
-     render template: "movies/new", alert: "Needs title and description."
-
+      render "new"    
     end
   end
 
@@ -43,15 +42,19 @@ class MoviesController < ApplicationController
   end
 
   def update
-    movie = Movie.find(params.fetch(:id))
-    movie.title = params.fetch(:title)
-    movie.description = params.fetch(:description)
+    # will update with above in a minute
 
-    if movie.valid?
-      movie.save
-      redirect_to movie_url(movie), notice: "Movie updated successfully."
+    @movie = Movie.find(params.fetch(:id))
+    movie_attributes = params.require(:movie).permit(:title, :description)
+    @movie.update(movie_attributes)
+    # @movie.title = params.fetch(:title)
+    # @movie.description = params.fetch(:description)
+
+    if @movie.valid?
+      @movie.save
+      redirect_to movie_url(@movie), notice: "Movie updated successfully."
     else
-      redirect_to movie_url(movie), alert: "Movie failed to update successfully."
+      redirect_to movie_url(@movie), alert: "Movie failed to update successfully."
     end
   end
 
