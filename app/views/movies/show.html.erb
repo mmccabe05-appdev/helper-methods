@@ -6,21 +6,17 @@
 
     <div>
       <div>
-      <%= link_to 'Go back', movies_path %>
+        <%= link_to 'Go back', movies_path %>
 
       </div>
 
       <div>
-      <%= link_to 'Edit movie', edit_movie_path(@the_movie.id) %>
+        <%= link_to 'Edit movie', edit_movie_path(@the_movie.id) %>
 
       </div>
 
       <div>
-      <%= link_to "Delete movie", movie_path(@the_movie), method: :delete %>
-
-        <a href="<%= movie_path(@the_movie.id) %>" data-method="delete">
-          OLD Delete movie
-        </a>
+        <%= link_to "Delete movie", movie_path(@the_movie), method: :delete %>
       </div>
     </div>
 
